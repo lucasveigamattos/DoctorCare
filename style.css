@@ -1,0 +1,411 @@
+/* Reset */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* Setting up & Variables */
+:root {
+    font-size: 62.5%;
+
+    --nav-height: 7.2rem;
+    --hue: 390;
+
+    --brand-color: hsl(var(--hue), 100%, 26%);
+    --brand-color-hover: hsl(var(--hue), 100%, 14%);
+    --brand-color-light: hsl(calc(var(--hue) - 22), 23%, 89%);
+    --brand-color-light-02: hsl(calc(var(--hue) + 10), 14%, 97%);
+    --brand-beige: hsl(39, 100%, 97%);
+    --gray-headline: hsl(210, 11%, 15%);
+    --gray-paragraph: hsl(210, 9%, 31%);
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+
+    scroll-behavior: smooth;
+}
+
+body {
+    font-size: 1.6rem;
+    text-align: center;
+    font-family: 'DM Sans', sans-serif;
+
+    overflow-y: overlay;
+}
+
+section {
+    padding-block: 10rem;
+}
+
+h2 {
+    font-size: 3rem;
+    line-height: 3.9rem;
+    color: var(--gray-headline);
+}
+
+h4 {
+    font-size: 1.4rem;
+    line-height: 150%;
+    letter-spacing: 0.08em;
+    color: var(--brand-color);
+
+    margin-bottom: 1.6rem;
+}
+
+p {
+    line-height: 150%;
+    color: var(--gray-headline);
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    cursor: pointer;
+
+    border: none;
+    background-color: transparent;
+}
+
+img {
+    max-width: 100%;
+}
+
+.primaryButton {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+
+    display: flex;
+    gap: 1.6rem;
+    width: fit-content;
+    padding: 1.6rem 3.2rem;
+    border-radius: 4rem;
+    margin-bottom: 6rem;
+    background-color: var(--brand-color);
+    transition: background-color 300ms;
+}
+
+.primaryButton:hover {
+    background-color: var(--brand-color-hover);
+}
+
+.secondaryButton {
+    font-size: 1.8rem;
+    line-height: 2.3rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--brand-color);
+
+    display: inline-block;
+    padding: 1.6rem 3.2rem;
+    border-radius: 4rem;
+    margin-bottom: 8rem;
+    background-color: white;
+    transition: 300ms;
+}
+
+.secondaryButton:hover {
+    color: white;
+    background-color: var(--brand-color);
+}
+
+.socialLinks {
+    display: flex;
+    justify-content: center;
+    gap: 3.2rem;
+}
+
+.wrapper {
+    width: 37.5rem;
+    padding-inline: 2.4rem;
+    margin-inline: auto;
+}
+
+/* Customizing svg's */
+nav .logo svg path[fill*="#00856F"], #backToTop svg circle {
+    fill: var(--brand-color);
+}
+
+#services svg circle {
+    fill: var(--brand-color-light);
+}
+
+nav #openMenu svg path, #services svg path, #contactUs svg path {
+    stroke: var(--brand-color);
+}
+
+/* Navigation */
+nav {
+    position: fixed;
+    z-index: 1;
+
+    display: flex;
+    width: 100%;
+    height: var(--nav-height);
+}
+
+nav .wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav.scroll {
+    background-color: var(--brand-color);
+}
+
+nav.scroll .logo svg path {
+    fill: white;
+}
+
+nav.scroll #openMenu svg path {
+    stroke: white;
+}
+
+/* Menu & Menu expanded */
+#menu, body.menuExpanded #openMenu, #closeMenu {
+    opacity: 0;
+    visibility: hidden;
+}
+
+body.menuExpanded #menu, body.menuExpanded #closeMenu {
+    opacity: 1;
+    visibility: visible;
+}
+
+body.menuExpanded {
+    overflow-y: hidden;
+}
+
+body.menuExpanded nav {
+    background-color: transparent;
+}
+
+body.menuExpanded > *:not(nav) {
+    opacity: 0;
+    visibility: hidden;
+}
+
+body.menuExpanded .logo svg path {
+    fill: white;
+}
+
+#menu {
+    transform: translateY(100%);
+}
+
+body.menuExpanded #menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    width: 100%;
+    height: 100%;
+    padding-top: calc(6rem + var(--nav-height));
+    background-color: var(--brand-color);
+    transform: translateY(0);
+    transition: transform 300ms;
+}
+
+#menu ul:nth-child(1) {
+    display: flex;
+    flex-direction: column;
+    gap: 4.8rem;
+    margin-bottom: 4.8rem;
+}
+
+#menu ul:nth-child(1) li a {
+    font-size: 2.4rem;
+    line-height: 3.1rem;
+    font-weight: 700;
+    color: var(--brand-beige);
+}
+
+/* Home */
+#home {
+    padding-block: 0;
+    padding-top: calc(4.1rem + var(--nav-height));
+}
+
+#home::before {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+
+    content: "";
+    display: block;
+    width: 100%;
+    height: calc(108rem + var(--nav-height));
+    background-color: var(--brand-color-light);
+}
+
+#home h1 {
+    font-size: 3.4rem;
+    line-height: 130%;
+    color: var(--gray-headline);
+    margin-bottom: 2.4rem;
+}
+
+#home p {
+    font-size: 1.8rem;
+    margin-bottom: 3.2rem;
+}
+
+#home .primaryButton {
+    margin-inline: auto;
+}
+
+#home #img01 {
+    display: block;
+    width: 26.1rem;
+    margin-inline: auto;
+}
+
+#stats {
+    display: flex;
+    flex-direction: column;
+    gap: 6rem;
+    padding-block: 4rem;
+    border: 0.1rem solid var(--brand-color-light);
+    border-radius: 0.6rem;
+    background-color: var(--brand-beige);
+}
+
+#home .stat h3 {
+    font-size: 4.8rem;
+    line-height: 130%;
+    color: var(--gray-headline);
+    margin-bottom: 0.4rem;
+}
+
+#home .stat p {
+    font-size: 1.6rem;
+    color: var(--brand-color);
+    margin-bottom: 0;
+}
+
+/* Services */
+#services {
+    background-color: var(--brand-color-light-02);
+}
+
+#services header h2 {
+    margin-bottom: 6rem;
+}
+
+#cards {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+}
+
+.card {
+    text-align: left;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    padding: 2.4rem;
+    border: 0.1rem solid var(--brand-color-light);
+    border-radius: 0.6rem;
+}
+
+.card h3 {
+    font-size: 2.4rem;
+    line-height: 3.1rem;
+    color: var(--gray-headline);
+}
+
+.card p {
+    color: var(--gray-paragraph);
+}
+
+/* About us */
+#aboutUs {
+    text-align: left;
+    background-color: var(--brand-beige);
+}
+
+#aboutUs header h2 {
+    margin-bottom: 2.4rem;
+}
+
+#aboutUs .content p {
+    margin-bottom: 6rem;
+}
+
+/* Contact us */
+#contactUs {
+    text-align: left;
+    background-color: white;
+}
+
+#contactUs header h2 {
+    margin-bottom: 3.2rem;
+}
+
+#contactUs .content ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+
+    margin-bottom: 3.2rem;
+}
+
+#contactUs .content ul li {
+    display: flex;
+    gap: 0.8rem;
+}
+
+/* Footer */
+footer {
+    text-align: left;
+    padding-block: 6rem;
+    background-color: var(--brand-color);
+}
+
+footer .logo {
+    display: inline-block;
+    margin-bottom: 2.4rem;
+}
+
+footer p {
+    line-height: 2.1rem;
+    color: var(--brand-beige);
+    margin-bottom: 6.4rem;
+}
+
+footer .socialLinks {
+    justify-content: left;
+}
+
+/* Back to top */
+#backToTop {
+    position: fixed;
+    right: 4rem;
+    bottom: 1.6rem;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: translateY(100%);
+    transition: 300ms;
+}
+
+#backToTop.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
