@@ -8,36 +8,27 @@ function showNavOnScroll() {
 function showBackToTopOnScroll() {
     const backToTop = document.getElementById('backToTop')
 
-    if (scrollY > 1000) {
-        backToTop.classList.add('show')
-    } else {
-        backToTop.classList.remove('show')
-    }
+    scrollY > 1000 ? backToTop.classList.add('show') : backToTop.classList.remove('show')
 }
 
-function activeMenuAtCurrentSection() {
+function activeMenuAtCurrentSection(section) {
     const targetLine = scrollY + innerHeight / 2
+    
+    const link = document.querySelector(`#menu a[href*=${section.getAttribute('id')}]`)
 
-    const links = document.getElementById('navigation').getElementsByClassName('menu')[0].getElementsByTagName('li')
+    const sectionTop = section.offsetTop
+    const sectionBottom = sectionTop + section.offsetHeight
 
-    const homeTop = document.getElementById('home').offsetTop
-    const homeBottom = document.getElementById('home').offsetHeight
-
-    const servicesTop = document.getElementById('services').offsetTop
-    const servicesBottom = document.getElementById('services').offsetTop + document.getElementById('services').offsetHeight
-
-    const aboutTop = document.getElementById('aboutUs').offsetTop
-    const aboutBottom = document.getElementById('aboutUs').offsetTop + document.getElementById('aboutUs').offsetHeight
-
-    targetLine > homeTop && targetLine < homeBottom ? links[0].classList.add('active') : links[0].classList.remove('active')
-    targetLine > servicesTop && targetLine < servicesBottom ? links[1].classList.add('active') : links[1].classList.remove('active')
-    targetLine > aboutTop && targetLine < aboutBottom ? links[2].classList.add('active') : links[2].classList.remove('active')
+    targetLine > sectionTop && targetLine < sectionBottom ? link.classList.add('active') : link.classList.remove('active')
 }
 
 function onScroll() {
     showNavOnScroll()
     showBackToTopOnScroll()
-    activeMenuAtCurrentSection()
+
+    activeMenuAtCurrentSection(home)
+    activeMenuAtCurrentSection(services)
+    activeMenuAtCurrentSection(aboutUs)
 }
 
 onScroll()

@@ -509,12 +509,12 @@ footer .socialLinks {
         opacity: 1;
     }
 
-    #menu ul:nth-child(1) li.active a {
+    #menu ul:nth-child(1) li a.active {
         font-weight: 700;
         opacity: 1;
     }
 
-    #menu ul:nth-child(1) li.active a::after {
+    #menu ul:nth-child(1) li a.active::after {
         width: 100%;
         opacity: 1;
     }
